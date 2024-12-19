@@ -34,10 +34,12 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while ( ) {
-    	
+    while (fscanf(file,"%[^,],%d\n",exercise_list[exercise_list_size].exercise_name,
+	&exercise_list[exercise_list_size].calories_burned_per_minute == 2) ) {
+    	// 운동이름 저장,2개의 항목이 잘 읽었는지 확인 
+    	exercise_list_size++; //운동 목록 1씩 증가 
         if (exercise_list_size >= MAX_EXERCISES){
-        	break;
+        	break; // 최대 운동 개수도달시 종료  
 		}
     }
 
@@ -60,6 +62,7 @@ void inputExercise(HealthData* health_data) {
     
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
+    
 
 
     // ToCode: to enter the exercise to be chosen with exit option
