@@ -70,7 +70,7 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
-            	inputExercise(&health_data); //운동입력 
+            	 //운동입력 
                 break;
                 
             case 2:
@@ -92,8 +92,16 @@ int main() {
                 printf("[Error] Invalid option. \n");
                 printf("Please try again! \n");
         }
-    } while (choice!= 4 && calculateRemainingCalories(&health_data) > 0);
+          // 진행 사항을 health_data.txt 파일에 백업
+        FILE *health_file = fopen(HEALTHFILEPATH, "w");
+        if (health_file != NULL) {
+            saveData(health_file, &health_data);
+            fclose(health_file);
+        } else {
+            printf("Error: Unable to backup health data.\n");
+        }
+    } while (choice!= 4 && calculateRemainingCalories(&health_data) > 0); 
 
-    return 0;
+    return 0; 
 }
 
